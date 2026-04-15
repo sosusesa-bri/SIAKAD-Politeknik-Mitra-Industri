@@ -1,0 +1,346 @@
+@import 'tailwindcss';
+
+/*
+ * ============================================
+ * SIAKAD Polmind — Design System
+ * Based on DESIGN.md: "The Academic Luminary"
+ * Creative North Star: "The Digital Curator"
+ * ============================================
+ */
+
+/* ---- Custom Theme Variables ---- */
+@theme {
+    /* Surface Hierarchy */
+    --color-surface: #f9f9fb;
+    --color-surface-container: #eeeef0;
+    --color-surface-container-low: #f3f3f5;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-high: #e8e8ea;
+
+    /* Primary Palette */
+    --color-primary: #000666;
+    --color-primary-container: #1a237e;
+    --color-primary-fixed: #d4d6ff;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #c8cbff;
+
+    /* Secondary Palette */
+    --color-secondary: #565e71;
+    --color-secondary-container: #e0e2ee;
+    --color-on-secondary: #ffffff;
+    --color-on-secondary-container: #131c2b;
+
+    /* Tertiary Palette (Orange Accent) */
+    --color-tertiary: #7d5635;
+    --color-tertiary-container: #551f00;
+    --color-tertiary-fixed: #ffdbcb;
+    --color-on-tertiary-fixed: #341100;
+
+    /* Text Colors */
+    --color-on-surface: #1a1c1d;
+    --color-on-surface-variant: #454652;
+
+    /* Outline & Borders */
+    --color-outline: #767680;
+    --color-outline-variant: #c6c5d4;
+
+    /* Status Colors */
+    --color-success: #1b6d3a;
+    --color-success-container: #d4f5e0;
+    --color-warning: #7c5800;
+    --color-warning-container: #ffefc7;
+    --color-error: #ba1a1a;
+    --color-error-container: #ffdad6;
+    --color-info: #00639b;
+    --color-info-container: #cde5ff;
+
+    /* Typography */
+    --font-display: 'Manrope', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Corner Radius */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-DEFAULT: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Spacing Scale */
+    --spacing-18: 4.5rem;
+    --spacing-22: 5.5rem;
+    --spacing-26: 6.5rem;
+    --spacing-30: 7.5rem;
+}
+
+/* ---- Base Reset & Typography ---- */
+body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Editorial Headlines */
+.heading-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--color-on-surface);
+}
+
+.heading-editorial {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    color: var(--color-on-surface);
+}
+
+/* Label styling */
+.label-meta {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+}
+
+/* ---- Tonal Card Elevation ---- */
+.card-elevated {
+    background-color: var(--color-surface-container-lowest);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+}
+
+.card-elevated:hover {
+    box-shadow: 0 4px 40px rgba(0, 6, 102, 0.04);
+}
+
+/* ---- Ambient Shadow ---- */
+.shadow-ambient {
+    box-shadow: 0 4px 40px rgba(0, 6, 102, 0.04);
+}
+
+.shadow-ambient-lg {
+    box-shadow: 0 8px 60px rgba(0, 6, 102, 0.06);
+}
+
+/* ---- Glass Navigation ---- */
+.glass-nav {
+    background-color: rgba(249, 249, 251, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---- Primary Gradient ---- */
+.gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+}
+
+.gradient-primary-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---- Ghost Input (DESIGN.md spec) ---- */
+.input-ghost {
+    border: 1px solid rgba(198, 197, 212, 0.2);
+    border-radius: var(--radius-DEFAULT);
+    background-color: var(--color-surface-container-lowest);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-ghost:focus {
+    outline: none;
+    border-color: transparent;
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 6, 102, 0.08);
+}
+
+/* ---- Textural Warmth Overlay ---- */
+.warmth-overlay {
+    position: relative;
+}
+
+.warmth-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(85, 31, 0, 0.05);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* ---- Button Variants ---- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+    color: var(--color-on-primary);
+    border-radius: var(--radius-DEFAULT);
+    font-weight: 600;
+    font-family: var(--font-body);
+    padding: 0.625rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 20px rgba(0, 6, 102, 0.15);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-accent {
+    background-color: var(--color-tertiary-fixed);
+    color: var(--color-on-tertiary-fixed);
+    border-radius: var(--radius-DEFAULT);
+    font-weight: 600;
+    font-family: var(--font-body);
+    padding: 0.625rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-accent:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 20px rgba(85, 31, 0, 0.12);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    border-radius: var(--radius-DEFAULT);
+    font-weight: 500;
+    font-family: var(--font-body);
+    padding: 0.625rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface-container-high);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--color-on-surface-variant);
+    border-radius: var(--radius-DEFAULT);
+    font-weight: 500;
+    font-family: var(--font-body);
+    padding: 0.625rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-ghost:hover {
+    background-color: var(--color-surface-container);
+}
+
+/* ---- Chip (DESIGN.md) ---- */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    gap: 0.375rem;
+}
+
+/* ---- Status Badge ---- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-success { background-color: var(--color-success-container); color: var(--color-success); }
+.badge-warning { background-color: var(--color-warning-container); color: var(--color-warning); }
+.badge-error   { background-color: var(--color-error-container);   color: var(--color-error); }
+.badge-info    { background-color: var(--color-info-container);    color: var(--color-info); }
+
+/* ---- Progress Bar (Academic) ---- */
+.progress-track {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--color-primary-fixed);
+    border-radius: var(--radius-DEFAULT);
+    overflow: hidden;
+}
+
+.progress-indicator {
+    height: 100%;
+    background-color: var(--color-primary);
+    transition: width 0.4s ease;
+    /* "data-accurate" feel: no rounded ends on indicator */
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-outline-variant);
+    border-radius: var(--radius-full);
+}
+
+/* ---- Transitions ---- */
+.transition-tonal {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ---- Editorial Asymmetry Helper ---- */
+.layout-editorial {
+    padding-left: 4rem;
+    padding-right: 8rem;
+}
+
+@media (max-width: 1024px) {
+    .layout-editorial {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .layout-editorial {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ---- Page Transition Animation ---- */
+.page-enter {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
